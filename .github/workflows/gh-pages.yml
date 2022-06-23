@@ -51,7 +51,7 @@ jobs:
           GIT_USER=facebookresearch
           CURRENT_BRANCH=new
           yarn run publish-gh-pages
-        env:
+        with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
