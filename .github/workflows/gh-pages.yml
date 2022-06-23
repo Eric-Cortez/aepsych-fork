@@ -54,6 +54,6 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
         branch: gh-pages # The branch the action should deploy to.
-        folder: website/build/aepsych # The folder the action should deploy
+        folder: website # The folder the action should deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
