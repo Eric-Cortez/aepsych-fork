@@ -3,11 +3,6 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 # https://github.com/marketplace/actions/github-pages
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-#
-# This source code is licensed under the MIT license found in the
-# LICENSE file in the root directory of this source tree.
-# https://github.com/marketplace/actions/github-pages
 name: Build and Deploy
 
 on:
@@ -45,15 +40,10 @@ jobs:
     - name: Build the Website
       run: |
         ./scripts/build_docs.sh -b
-    # - name: Build/
-    #   run: |
-    #     cd website
-    #     npm install
-    #     npm run build
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
         branch: gh-pages # The branch the action should deploy to.
-        folder: website # The folder the action should deploy
+        folder: website/build # The folder the action should deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
