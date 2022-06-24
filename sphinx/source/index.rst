@@ -12,7 +12,7 @@ AEPsych API Reference
    :maxdepth: 1
    :caption: API Reference
 
-   acquisition
+   aepsych.acquisition
    benchmark
    database
    factory
