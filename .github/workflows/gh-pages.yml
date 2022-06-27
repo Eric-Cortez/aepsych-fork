@@ -50,6 +50,6 @@ jobs:
       with:
         branch: gh-pages # The branch the action should deploy to.
         # folder: website/build/aepsych-fork # The folder the action should deploy
-        folder: website/ # The folder the action should deploy
+        folder: website/build # The folder the action should deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
