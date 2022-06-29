@@ -16,18 +16,18 @@ import sys
 
 # from pkg_resources import get_distribution
 
-_HERE = os.path.dirname(__file__)
-_ROOT_DIR = os.path.abspath(os.path.join(_HERE, '../..'))
-_PACKAGE_DIR = os.path.abspath(os.path.join(_HERE, '../../aepsych'))
+# _HERE = os.path.dirname(__file__)
+# _ROOT_DIR = os.path.abspath(os.path.join(_HERE, '../..'))
+# _PACKAGE_DIR = os.path.abspath(os.path.join(_HERE, '../../aepsych'))
 
-sys.path.insert(0, _ROOT_DIR)
-sys.path.insert(0, _PACKAGE_DIR)
+# sys.path.insert(0, _ROOT_DIR)
+# sys.path.insert(0, _PACKAGE_DIR)
 
 # sys.path.insert(0, os.path.abspath("../../"))
 
-# base_path = os.path.abspath(os.path.join(__file__, "..", "..", "..", "aepsych"))
-# print(sys.path, base_path, "======")
-# sys.path.append(base_path)
+base_path = os.path.abspath(os.path.join(__file__, "..", "..", "..", "aepsych"))
+print(sys.path, base_path, "======")
+sys.path.append(base_path)
 
 
 # -- Project information -----------------------------------------------------
