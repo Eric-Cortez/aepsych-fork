@@ -23,7 +23,7 @@ import sys
 # sys.path.insert(0, _ROOT_DIR)
 # sys.path.insert(0, _PACKAGE_DIR)
 
-# sys.path.insert(0, os.path.abspath("../../"))
+sys.path.insert(0, os.path.abspath("../../"))
 
 base_path = os.path.abspath(os.path.join(__file__, "..", "..", "..", "aepsych"))
 print(sys.path, base_path, "======")
