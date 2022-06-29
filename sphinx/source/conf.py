@@ -25,9 +25,9 @@ import sys
 
 sys.path.insert(0, os.path.abspath("../../"))
 
-base_path = os.path.abspath(os.path.join(__file__, "..", "..", "..", "aepsych"))
-print(sys.path, base_path, "======")
-sys.path.append(base_path)
+# base_path = os.path.abspath(os.path.join(__file__, "..", "..", "..", "aepsych"))
+# print(sys.path, base_path, "======")
+# sys.path.append(base_path)
 
 
 # -- Project information -----------------------------------------------------
