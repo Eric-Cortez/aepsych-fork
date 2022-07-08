@@ -33,14 +33,25 @@ class HomeSplash extends React.Component {
 
     const Logo = (props) => (
       // <div className="projectLogo">
-      <img className="splash-logo" src={props.img_src} alt="Project Logo" />
+      <img className="splash-logo"
+       src={props.img_src}
+       alt="Project Logo"
+       style={{width:"120px", height: "120px"}}
+       />
       // </div>
     );
 
     const ProjectTitle = (props) => (
       <h2 className="projectTitle">
         {props.title}
-        <div className="tagline">
+        {/* <div className="tagline">
+          <small className="inner-tag">{props.tagline}</small>
+        </div> */}
+      </h2>
+    );
+    const ProjectTagline = (props) => (
+      <h2 className="projectTitle">
+         <div className="tagline">
           <small className="inner-tag">{props.tagline}</small>
         </div>
       </h2>
@@ -65,9 +76,17 @@ class HomeSplash extends React.Component {
     return (
       <SplashContainer>
         {/* Main logo */}
-        {/* <Logo img_src={`${baseUrl}img/placeholder.png`} /> */}
+        <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center"
+          }}>
+        <Logo img_src={`${baseUrl}img/favicon.ico`} />
+        <ProjectTitle title={siteConfig.title} />
+        </div>
         <div className="inner">
-          <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
+        <ProjectTagline tagline={siteConfig.tagline} />
           <PromoSection>
             <Button class="splash-btns" href={docUrl("introduction")}>INTRODUCTION</Button>
             <Button class="splash-btns" href={'#quickstart'}>Get Started</Button>
