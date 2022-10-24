@@ -23,36 +23,45 @@ for Interactive AEPsych and activated it, you can install the requirements
 using pip:
 
 ```bash
-git clone <link here>
-pip install -r requirements.txt
+git clone https://github.com/facebookresearch/aepsych.git
 ```
+## Create virtual environment
 
-#### Create virtual environment
+Create the envrioment in the root directory
+
 ```
+cd aepsych
 python -m venv ./
-
 ```
 
-### Activate virtual environment
+### Usage
+Use the following command to run the notebook locally with voila
+
+## Activate virtual environment
 
 ```bash
 source bin/activate
 conda activate
-jupyter notebook
 ```
-### Deactivate virtual environment
+## Run the notebook with Voila
+
+```bash
+cd examples/aepsych_visualizer/voila
+voila notebooks/AEPsych_Visualizer_Dash_Beta.ipynb
+```
+
+To stop the server click `ctr + c`
+
+## Deactivate virtual environment
+
+This will remove the envroment prefix from your terminal
+
 ```bash
 deactivate
 conda deactivate
 ```
 
-### Voila
 
-Use the following command to run voila locally
-
-```bash
-voila <filename>.ipyn
-```
 
 <!-- ```
 for debugging
