@@ -161,6 +161,8 @@ class AEPsychServer(object):
             logger.debug(f"replay - type = {result.message_type} request = {request}")
             self.handle_request(request)
 
+        self._db_master_record = master_record
+        logger.debug(f"replay - [Resume] uuid = {uuid_to_replay} master_record = {master_record.unique_id}")
         self.is_performing_replay = False
         self.skip_computations = False
 
