@@ -1,0 +1,2 @@
+[console_scripts]
+aepsych_server = aepsych.server.server:main

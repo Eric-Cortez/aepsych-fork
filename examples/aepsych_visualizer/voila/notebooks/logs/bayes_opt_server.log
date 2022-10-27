@@ -1,0 +1,35 @@
+2022-10-26 21:04:59,984 [INFO   ] Found DB at /Users/ecortez/Work/aepsych-fork/examples/aepsych_visualizer/voila/notebooks/databases/_databases_default.db, appending!
+2022-10-26 21:05:00,014 [INFO   ] skip_computations=True, make sure to refit the final strat before doing anything!
+2022-10-26 21:05:00,029 [INFO   ] Received msg [setup]
+2022-10-26 21:05:00,037 [INFO   ] Received msg [setup]
+2022-10-26 21:05:00,040 [INFO   ] Received msg [ask]
+2022-10-26 21:05:00,040 [INFO   ] Received msg [tell]
+2022-10-26 21:05:00,042 [INFO   ] Received msg [ask]
+2022-10-26 21:05:00,042 [INFO   ] Received msg [tell]
+2022-10-26 21:05:00,044 [INFO   ] Received msg [ask]
+2022-10-26 21:05:00,045 [INFO   ] Received msg [tell]
+2022-10-26 21:05:00,046 [INFO   ] Received msg [ask]
+2022-10-26 21:05:00,047 [INFO   ] Received msg [tell]
+2022-10-26 21:05:00,048 [INFO   ] Received msg [tell]
+2022-10-26 21:05:00,049 [INFO   ] Received msg [ask]
+2022-10-26 21:05:00,050 [INFO   ] Starting fitting (no warm start)...
+2022-10-26 21:05:00,053 [INFO   ] Starting fit...
+2022-10-26 21:05:00,424 [INFO   ] Fit done, time=0.3708789348602295
+2022-10-26 21:05:00,425 [INFO   ] Fitting done, took 0.3744187355041504
+2022-10-26 21:05:00,425 [INFO   ] Starting gen...
+2022-10-26 21:05:00,463 [INFO   ] Gen done, time=0.03746223449707031
+2022-10-26 21:05:00,467 [INFO   ] Received msg [ask]
+2022-10-26 21:05:05,403 [INFO   ] Starting gen...
+2022-10-26 21:05:05,443 [INFO   ] Gen done, time=0.03904294967651367
+2022-10-26 21:05:05,447 [INFO   ] Received msg [ask]
+2022-10-26 21:05:06,350 [INFO   ] Received msg [tell]
+2022-10-26 21:05:06,359 [INFO   ] Recording strat because the experiment is complete.
+2022-10-26 21:05:07,066 [INFO   ] Starting fitting (warm start)...
+2022-10-26 21:05:07,067 [INFO   ] Starting fit...
+2022-10-26 21:05:07,217 [INFO   ] Fit done, time=0.14902710914611816
+2022-10-26 21:05:07,218 [INFO   ] Fitting done, took 0.15253019332885742
+2022-10-26 21:05:07,219 [INFO   ] Starting gen...
+2022-10-26 21:05:07,249 [INFO   ] Gen done, time=0.02982187271118164
+2022-10-26 21:05:07,253 [INFO   ] Received msg [ask]
+2022-10-26 21:05:14,097 [INFO   ] Received msg [tell]
+2022-10-26 21:05:14,110 [INFO   ] Recording strat because the experiment is complete.
