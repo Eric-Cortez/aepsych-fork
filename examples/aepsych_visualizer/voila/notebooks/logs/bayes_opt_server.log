@@ -1,24 +1,118 @@
-2022-11-01 18:10:37,817 [INFO   ] Found DB at /Users/ecortez/Work/aepsych-fork/examples/aepsych_visualizer/voila/notebooks/databases/test.db, appending!
-2022-11-01 18:10:37,845 [INFO   ] skip_computations=True, make sure to refit the final strat before doing anything!
-2022-11-01 18:10:37,860 [INFO   ] Received msg [setup]
-2022-11-01 18:10:37,863 [INFO   ] Received msg [ask]
-2022-11-01 18:10:37,863 [INFO   ] Received msg [tell]
-2022-11-01 18:10:37,865 [INFO   ] Received msg [ask]
-2022-11-01 18:10:37,866 [INFO   ] Received msg [tell]
-2022-11-01 18:10:37,867 [INFO   ] Received msg [ask]
-2022-11-01 18:10:37,868 [INFO   ] Received msg [tell]
-2022-11-01 18:10:37,869 [INFO   ] Recording strat because the experiment is complete.
-2022-11-01 18:10:37,881 [INFO   ] Received msg [ask]
-2022-11-01 18:10:37,882 [INFO   ] Received msg [tell]
-2022-11-01 18:10:37,882 [INFO   ] Recording strat because the experiment is complete.
-2022-11-01 18:10:37,892 [INFO   ] Received msg [ask]
-2022-11-01 18:10:37,893 [INFO   ] Received msg [ask]
-2022-11-01 18:10:37,894 [INFO   ] Received msg [tell]
-2022-11-01 18:10:37,894 [INFO   ] Recording strat because the experiment is complete.
-2022-11-01 18:10:37,907 [INFO   ] Starting fitting (warm start)...
-2022-11-01 18:10:37,907 [INFO   ] Starting fit...
-2022-11-01 18:10:38,584 [INFO   ] Fit done, time=0.6766312122344971
-2022-11-01 18:10:38,585 [INFO   ] Fitting done, took 0.6781408786773682
-2022-11-01 18:10:38,585 [INFO   ] Starting gen...
-2022-11-01 18:10:38,997 [INFO   ] Gen done, time=0.411344051361084
-2022-11-01 18:10:39,002 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,290 [INFO   ] Found DB at /Users/ecortez/Work/aepsych-fork/examples/aepsych_visualizer/voila/notebooks/databases/test_single_exp_two_strats.db, appending!
+2022-11-02 14:46:26,325 [INFO   ] skip_computations=True, make sure to refit the final strat before doing anything!
+2022-11-02 14:46:26,344 [INFO   ] Received msg [setup]
+2022-11-02 14:46:26,346 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,347 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,348 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,348 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,350 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,351 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,353 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,353 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,355 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,356 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,357 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,358 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,359 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,360 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,361 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,362 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,364 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,364 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,366 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,366 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,368 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,368 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,370 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,370 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,372 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,373 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,374 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,375 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,376 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,377 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,378 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,386 [INFO   ] Received msg [setup]
+2022-11-02 14:46:26,388 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,388 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,389 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,390 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,392 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,393 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,395 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,395 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,397 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,397 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,399 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,399 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,400 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,401 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,402 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,403 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,405 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,405 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,407 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,407 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,409 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,410 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,411 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,412 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,413 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,414 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,416 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,416 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,418 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,418 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,420 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,420 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,422 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,423 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,424 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,425 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,427 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,428 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,429 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,430 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,432 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,433 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,435 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,436 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,437 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,438 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,440 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,441 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,442 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,443 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,444 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,445 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,447 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,447 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,449 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,450 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,451 [INFO   ] Received msg [ask]
+2022-11-02 14:46:26,452 [INFO   ] Received msg [tell]
+2022-11-02 14:46:26,453 [INFO   ] Recording strat because the experiment is complete.
+2022-11-02 14:46:26,469 [INFO   ] Received msg [query]
+2022-11-02 14:46:26,471 [INFO   ] Starting fitting (no warm start)...
+2022-11-02 14:46:26,474 [INFO   ] Starting fit...
+2022-11-02 14:46:27,736 [INFO   ] Fit done, time=1.261955976486206
+2022-11-02 14:46:27,737 [INFO   ] Fitting done, took 1.2659881114959717
+2022-11-02 14:46:27,737 [INFO   ] Starting gen...
+2022-11-02 14:46:28,110 [INFO   ] Gen done, time=0.371793270111084
+2022-11-02 14:46:28,117 [INFO   ] Received msg [ask]
+2022-11-02 14:46:29,636 [INFO   ] Starting fit...
+2022-11-02 14:46:30,701 [INFO   ] Fit done, time=1.064802885055542
+2022-11-02 14:46:58,382 [INFO   ] Starting gen...
+2022-11-02 14:46:58,843 [INFO   ] Gen done, time=0.45943403244018555
+2022-11-02 14:46:58,846 [INFO   ] Received msg [ask]
+2022-11-02 14:46:59,642 [INFO   ] Received msg [tell]
+2022-11-02 14:46:59,651 [INFO   ] Recording strat because the experiment is complete.
+2022-11-02 14:47:04,679 [INFO   ] Starting fitting (warm start)...
+2022-11-02 14:47:04,684 [INFO   ] Starting fit...
+2022-11-02 14:47:05,173 [INFO   ] Fit done, time=0.4870262145996094
+2022-11-02 14:47:05,173 [INFO   ] Fitting done, took 0.4941139221191406
+2022-11-02 14:47:05,174 [INFO   ] Starting gen...
+2022-11-02 14:47:05,624 [INFO   ] Gen done, time=0.4493539333343506
+2022-11-02 14:47:05,627 [INFO   ] Received msg [ask]
+2022-11-02 14:47:06,274 [INFO   ] Received msg [tell]
+2022-11-02 14:47:06,286 [INFO   ] Recording strat because the experiment is complete.
