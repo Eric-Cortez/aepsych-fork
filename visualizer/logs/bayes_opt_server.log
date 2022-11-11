@@ -1,0 +1,8 @@
+2022-11-10 17:18:19,115 [INFO   ] Found DB at /Users/ecortez/Downloads/aepsych-fork/visualizer/databases/_databases_default (2).db, appending!
+2022-11-10 17:18:19,131 [INFO   ] skip_computations=True, make sure to refit the final strat before doing anything!
+2022-11-10 17:18:19,140 [INFO   ] Received msg [setup]
+2022-11-10 17:18:19,141 [INFO   ] Received msg [ask]
+2022-11-10 17:18:19,142 [INFO   ] Received msg [tell]
+2022-11-10 17:18:19,143 [INFO   ] Received msg [ask]
+2022-11-10 17:18:19,143 [INFO   ] Received msg [tell]
+2022-11-10 17:18:19,147 [INFO   ] Received msg [ask]

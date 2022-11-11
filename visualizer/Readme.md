@@ -1,42 +1,25 @@
 # AEPsych Visualization Dashboard
 
-This notebook is an interactive interface for AEPsych, a Python package for adaptive experimentation in psychophysics and related domains. AEPsych utilizes active learning to efficiently explore parameter spaces, allowing experimenters to find just-noticeable differences (or other quantities of interest) in far fewer trials than traditional methods. This notebook will allow you to use AEPsych without having to write any code.
-
-
-With the help of Voila and Binder, you can now conduct experiments with interactive widgets.
-
-
-To start or resume an experiment launch the interactive dashboard with Binder.
-<!-- update link once notbook lands -->
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Eric-Cortez/test-dash/HEAD?urlpath=voila%2Frender%2Fnotebooks%2FAEPsych_Visualizer_Dash_Beta.ipynb)
+This notebook is a visualization dashboard for AEPsych, a Python package for adaptive experimentation in psychophysics and related domains. AEPsych utilizes active learning to efficiently explore parameter spaces, allowing experimenters to find just-noticeable differences (or other quantities of interest) in far fewer trials than traditional methods. You can upload database files to this notebook to display data from earlier experiments for analysis in addition to creating new experiments. Now, you have the ability to inspect experiment configurations, raw data, and server logs. This dashboard contains built in plotting and interactive visualization that may be used for model checking.
 
 # Installation
 
-Requirements: anaconda
+Requirements: anaconda, python=3.8.13
 
-These steps are to install and run a jupyter notebook locally. We recommend installing the AEPsych Visualizer under a virtual
-environment like Anaconda.
-
-
-## Clone and create a conda virtual environment
+Before running the AEPsych Visualizer you will need to install AEPsych. We recommend installing the AEPsych under a virtual environment like Anaconda. You can create a virtual environment using the following commands.
 
 ```
-git clone https://github.com/facebookresearch/aepsych.git
 cd aepsych
 conda create -n aepsych_visualizer python=3.8.13
+conda activate aepsych_visualizer
 ```
 
-## Activate virtual environment and install dependencies
-```bash
-conda activate aepsych_visualizer
-pip install -r requirements.txt
-pip install -e .
-```
-<!-- pip install -e git+https://github.com/facebookresearch/aepsych.git@92834afa0bcb8201797d48e99c3ce3b9ce67af64#egg=aepsych -->
+Once the conda environment is activated refer to the [readme.md](https://github.com/facebookresearch/aepsych#:~:text=pip%20install%20%2Dr%20requirements.txt%0Apip%20install%20%2De%20.) in the root directory to install the aepsych dependencies. After installing the dependencies you can run the notebook using the following command.
+
 ## Run the notebook with Voila
 
 ```bash
-voila visualizer/aepsych_visualizer/voila/notebooks/AEPsych_Visualizer_Dash_Beta.ipynb
+voila visualizer/AEPsych_Visualizer_Dash_Beta.ipynb
 ```
 
 To stop the server click `ctrl + c`
