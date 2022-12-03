@@ -1,0 +1,9 @@
+setup.py
+aepsych_client/__init__.py
+aepsych_client/client.py
+aepsych_client.egg-info/PKG-INFO
+aepsych_client.egg-info/SOURCES.txt
+aepsych_client.egg-info/dependency_links.txt
+aepsych_client.egg-info/top_level.txt
+tests/__init__.py
+tests/test_client.py
