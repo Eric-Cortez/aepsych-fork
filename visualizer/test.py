@@ -12,7 +12,7 @@ from aepsych.server import AEPsychServer
 from aepsych_client import AEPsychClient
 from IPython.core.display import HTML as html
 from IPython.display import display, HTML
-from ipywidgets import Box, Button, HTML, Label, Layout, Text
+from ipywidgets import Box, Button, HTML, interact, Label, Layout, Text
 
 
 plt.rcParams["figure.figsize"] = (8, 8)
@@ -935,7 +935,6 @@ def make_config():
 
     try:
         config_output.clear_output()
-
         with config_output:
             if client != None:
                 config_status = None
@@ -953,9 +952,8 @@ def make_config():
                 button_submit_config.disable = False
 
                 if config_status:
+                    get_next("set_inputs")
                     config_output.clear_output()
-
-                get_next("set_inputs")
                 if dim > 3:
                     display(
                         HTML(
@@ -1102,7 +1100,7 @@ def resume_config_value():
 # --------- Accordion -----------
 button_submit = widgets.Button(
     description="Submit",
-    disabled=False,http://localhost:8888/notebooks/visualizer/AEPsych_Visualizer_Dash_Beta.ipynb#
+    disabled=False,
     button_style="info",
     tooltip="submit",
     layout=btn_style,
@@ -1226,27 +1224,22 @@ def pairwise_check(config_str):
         return False
 
 
-
-import json
-
 def gen_param_bounds():
     """Generates a dictionary with the param name and the corresponding lb and ub"""
     global client
 
     param_bounds = {}
     config_common = dict(client.server.config["common"])
-    param_names = config_common["parnames"].strip('][').split(', ')
-    lb = config_common["lb"].strip('][').split(', ')
-    ub = config_common["ub"].strip('][').split(', ')
-
+    param_names = client.server.parnames
+    lb = config_common["lb"].strip("][").split(",")
+    ub = config_common["ub"].strip("][").split(",")
     for i in range(len(param_names)):
-        param_bounds[param_names[i]] = {"min_val": float(lb[i]), "max_val": float(ub[i])}
+        param_bounds[param_names[i]] = {
+            "min_val": float(lb[i]),
+            "max_val": float(ub[i]),
+        }
 
     return param_bounds
-
-
-
-
 
 
 def get_next(status):
@@ -1257,32 +1250,35 @@ def get_next(status):
     global client
 
     interactive_buttons[1].disabled = False
+    param_bounds = gen_param_bounds()
 
-    if status == "set_inputs":
+    if status == "set_inputs":  # displays the inputs before ask
         param_output.clear_output()
         with param_output:
-            print(client.server.parnames)
-
-            param_bounds = gen_param_bounds()
-
 
             if pairwise_check(client.server.config):
                 children = []
                 for name in client.server.parnames:
                     children.append(
-                        widgets.FloatText(
-                            value=0,
+                        widgets.widgets.FloatText(
+                            value=None,
                             description=f"{name}",
                             disabled=False,
-                            layout=Layout(margin="5px 10px"),
+                            layout=Layout(
+                                margin="5px 10px", width="fit-content !important"
+                            ),
+                            continuous_update=False,
                         )
                     )
                     children.append(
-                        widgets.FloatText(
-                            value=0,
+                        widgets.widgets.FloatText(
+                            value=None,
                             description=f"{name}",
                             disabled=False,
-                            layout=Layout(margin="5px 10px"),
+                            layout=Layout(
+                                margin="5px 10px", width="fit-content !important"
+                            ),
+                            continuous_update=False,
                         )
                     )
 
@@ -1294,13 +1290,14 @@ def get_next(status):
                 children = []
                 for name in client.server.parnames:
                     children.append(
-                        widgets.BoundedFloatText(
-                            value=0,
+                        widgets.widgets.FloatText(
+                            value=None,
                             description=f"{name}",
-#                             min= param_bounds[name]["min_val"],
-#                             max = param_bounds[name]["max_val"],
                             disabled=False,
-                            layout=Layout(margin="5px 10px"),
+                            layout=Layout(
+                                margin="5px 10px", width="fit-content !important"
+                            ),
+                            continuous_update=False,
                         )
                     )
                 outcome.value = 0
@@ -1324,7 +1321,7 @@ def get_next(status):
 
     if ask_status:
         param_output.clear_output()
-        with param_output:
+        with param_output:  # displays the inputs after ask
             print("Received msg [ask]")
             if res["is_finished"]:
                 print(f"All strategies in the experiment have finished.")
@@ -1333,36 +1330,39 @@ def get_next(status):
                 children = []
                 for name, data in ask_response.items():
                     children.append(
-                        widgets.FloatText(
+                        widgets.widgets.FloatText(
                             value=data[0],
                             description=f"{name}",
                             disabled=False,
                             layout=Layout(
                                 margin="5px 10px", width="fit-content !important"
                             ),
+                            continuous_update=False,
                         )
                     )
                     children.append(
-                        widgets.FloatText(
+                        widgets.widgets.FloatText(
                             value=data[1],
                             description=f"{name}",
                             disabled=False,
                             layout=Layout(
                                 margin="5px 10px", width="fit-content !important"
                             ),
+                            continuous_update=False,
                         )
                     )
             else:
                 children = []
                 for name, data in ask_response.items():
                     children.append(
-                        widgets.FloatText(
+                        widgets.widgets.FloatText(
                             value=data[0],
                             description=f"{name}",
                             disabled=False,
                             layout=Layout(
                                 margin="5px 10px", width="fit-content !important"
                             ),
+                            continuous_update=False,
                         )
                     )
 
@@ -1371,7 +1371,7 @@ def get_next(status):
             param_box.children = children
 
 
-def tell_model(d):
+def tell_model():
     """
     Sends an ask message to the client based on the values in the param inputs.
 
@@ -1433,8 +1433,43 @@ def send_to_client(d):
         print("""Send to Client - Not yet implemented""")
 
 
+def check_min_max(b):
+    param_bounds = gen_param_bounds()
+    param_output.clear_output()
+    with param_output:
+        is_valid = True
+        for param in param_box.children:
+            if "outcome" not in param.description:
+                if param.value > param_bounds[param.description]["max_val"]:
+                    display(
+                        HTML(
+                            f"""
+                    <p style="text-align:left; color: red;">
+                        * Parameter {param.description} must be less than the Upper Bound:
+                    </p>"""
+                        )
+                    )
+                    print(param_bounds[param.description]["max_val"])
+                    is_valid = False
+                    return
+                if param.value < param_bounds[param.description]["min_val"]:
+                    display(
+                        HTML(
+                            f"""
+                    <p style="text-align:left; color: red;">
+                        * Parameter {param.description} must be greater than the Lower Bound:
+                    </p>"""
+                        )
+                    )
+                    print(param_bounds[param.description]["min_val"])
+                    is_valid = False
+                    return
+        if is_valid:
+            tell_model()
+
+
 interactive_buttons[0].on_click(get_next)
-interactive_buttons[1].on_click(tell_model)
+interactive_buttons[1].on_click(check_min_max)
 interactive_buttons[2].on_click(send_to_client)
 
 # -------- Table view ----------
@@ -1649,6 +1684,16 @@ def display_plot():
             db_strats.options = [
                 (f"strat - {i}", j) for i, j in enumerate(client.configs)
             ]
+            display(
+                widgets.HBox(
+                    [db_strats, resume_strat],
+                    layout=Layout(
+                        display="flex",
+                        justify_content="flex-start",
+                        align_items="center",
+                    ),
+                )
+            )
 
             current_strat_label.value = (
                 f"Current Strat: {db_strats.options[db_strats.value][0]}"
@@ -1683,18 +1728,6 @@ def display_plot():
                 print("Please note: No plots for >3d!")
             elif client.server.strat.model == None:
                 print("Collect more data to build the model and create the plot")
-
-            display(
-                widgets.HBox(
-                    [db_strats, resume_strat],
-                    layout=Layout(
-                        display="flex",
-                        justify_content="flex-start",
-                        align_items="center",
-                    ),
-                )
-            )
-
         except AttributeError as err:
             print("Collect more data to build the model and create the plot, \n")
             print(err)
@@ -2113,6 +2146,7 @@ def reset_dash(e):
     plot_output.clear_output()
     out.clear_output()
     error_output.clear_output()
+
     home_view_container.layout.display = "inline"
     main_container.layout.display = "none"
     button_reset.layout.display = "none"

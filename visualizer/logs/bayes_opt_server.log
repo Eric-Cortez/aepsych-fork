@@ -1,3 +1,2 @@
-2022-12-02 18:10:59,916 [INFO   ] No DB found at ./databases/default.db, creating a new DB!
-2022-12-02 18:10:59,974 [INFO   ] Received msg [setup]
-2022-12-02 18:11:02,769 [INFO   ] Received msg [ask]
+2022-12-05 11:29:44,546 [INFO   ] No DB found at ./databases/default.db, creating a new DB!
+2022-12-05 11:29:44,631 [INFO   ] Received msg [setup]
