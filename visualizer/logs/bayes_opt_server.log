@@ -1,0 +1,5 @@
+2022-12-05 17:17:53,411 [INFO   ] No DB found at ./databases/default.db, creating a new DB!
+2022-12-05 17:17:53,464 [INFO   ] Received msg [setup]
+2022-12-05 17:17:56,947 [INFO   ] Received msg [ask]
+2022-12-05 17:17:58,370 [INFO   ] Received msg [tell]
+2022-12-05 17:17:59,090 [INFO   ] Received msg [ask]
