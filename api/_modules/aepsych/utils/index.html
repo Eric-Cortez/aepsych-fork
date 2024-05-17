@@ -29,7 +29,6 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">ax.service.utils.instantiation</span> <span class="kn">import</span> <span class="n">ObjectiveProperties</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 <span class="kn">from</span> <span class="nn">torch.quasirandom</span> <span class="kn">import</span> <span class="n">SobolEngine</span>
 
@@ -53,11 +52,9 @@
 <div class="viewcode-block" id="dim_grid"><a class="viewcode-back" href="../../utils.html#aepsych.utils.dim_grid">[docs]</a><span class="k">def</span> <span class="nf">dim_grid</span><span class="p">(</span>
     <span class="n">lower</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
     <span class="n">upper</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">gridsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">slice_dims</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
-
 <span class="w">    </span><span class="sd">"""Create a grid</span>
 <span class="sd">    Create a grid based on lower, upper, and dim.</span>
 <span class="sd">    Parameters</span>
@@ -74,7 +71,7 @@
 <span class="sd">    """</span>
     <span class="n">slice_dims</span> <span class="o">=</span> <span class="n">slice_dims</span> <span class="ow">or</span> <span class="p">{}</span>
 
-    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_process_bounds</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="n">_process_bounds</span><span class="p">(</span><span class="n">lower</span><span class="p">,</span> <span class="n">upper</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="n">mesh_vals</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -149,7 +146,6 @@
     <span class="n">gridsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
 <span class="p">):</span>
-
     <span class="n">xgrid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span>
         <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span>
             <span class="p">[</span>
@@ -173,7 +169,6 @@
     <span class="k">if</span> <span class="n">cred_level</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">contours</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-
         <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cred_level</span>
         <span class="n">qlower</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span>
         <span class="n">qupper</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span>
@@ -279,6 +274,30 @@
     <span class="k">return</span> <span class="n">range_params</span> <span class="o">+</span> <span class="n">choice_params</span> <span class="o">+</span> <span class="n">fixed_params</span></div>
 
 
+<div class="viewcode-block" id="get_bounds"><a class="viewcode-back" href="../../utils.html#aepsych.utils.get_bounds">[docs]</a><span class="k">def</span> <span class="nf">get_bounds</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">:</span>
+    <span class="n">range_params</span><span class="p">,</span> <span class="n">choice_params</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_get_ax_parameters</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+    <span class="c1"># Need to sum dimensions added by both range and choice parameters</span>
+    <span class="n">bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">parm</span><span class="p">[</span><span class="s2">"bounds"</span><span class="p">]</span> <span class="k">for</span> <span class="n">parm</span> <span class="ow">in</span> <span class="n">range_params</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">par</span> <span class="ow">in</span> <span class="n">choice_params</span><span class="p">:</span>
+        <span class="n">n_vals</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">par</span><span class="p">[</span><span class="s2">"values"</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">par</span><span class="p">[</span><span class="s2">"is_ordered"</span><span class="p">]:</span>
+            <span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>  <span class="c1"># Ordered choice params are encoded like continuous parameters</span>
+        <span class="k">elif</span> <span class="n">n_vals</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_vals</span><span class="p">):</span>
+                <span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="p">)</span>  <span class="c1"># Choice parameter is one-hot encoded such that they add 1 dim for every choice</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_vals</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="p">)</span>  <span class="c1"># Choice parameters with n_choices &lt;= 2 add n_choices - 1 dims</span>
+
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span></div>
+
+
 <div class="viewcode-block" id="get_dim"><a class="viewcode-back" href="../../utils.html#aepsych.utils.get_dim">[docs]</a><span class="k">def</span> <span class="nf">get_dim</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="n">range_params</span><span class="p">,</span> <span class="n">choice_params</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">_get_ax_parameters</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
     <span class="c1"># Need to sum dimensions added by both range and choice parameters</span>
@@ -296,33 +315,6 @@
             <span class="p">)</span>  <span class="c1"># Choice parameters with n_choices &lt; 3 add n_choices - 1 dims</span>
 
     <span class="k">return</span> <span class="n">dim</span></div>
-
-
-<div class="viewcode-block" id="get_objectives"><a class="viewcode-back" href="../../utils.html#aepsych.utils.get_objectives">[docs]</a><span class="k">def</span> <span class="nf">get_objectives</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
-    <span class="n">outcome_types</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span>
-        <span class="s2">"common"</span><span class="p">,</span> <span class="s2">"outcome_types"</span><span class="p">,</span> <span class="n">element_type</span><span class="o">=</span><span class="nb">str</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">outcome_types</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">out_type</span> <span class="ow">in</span> <span class="n">outcome_types</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="p">(</span>
-                <span class="n">out_type</span> <span class="o">==</span> <span class="s2">"continuous"</span>
-            <span class="p">),</span> <span class="s2">"Multiple outcomes is only currently supported for continuous outcomes!"</span>
-
-    <span class="n">outcome_names</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">getlist</span><span class="p">(</span>
-        <span class="s2">"common"</span><span class="p">,</span> <span class="s2">"outcome_names"</span><span class="p">,</span> <span class="n">element_type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="kc">None</span>
-    <span class="p">)</span>
-    <span class="k">if</span> <span class="n">outcome_names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">outcome_names</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"outcome_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outcome_types</span><span class="p">))]</span>
-
-    <span class="n">objectives</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">out_name</span> <span class="ow">in</span> <span class="n">outcome_names</span><span class="p">:</span>
-        <span class="n">minimize</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="n">out_name</span><span class="p">,</span> <span class="s2">"minimize"</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">threshold</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">getfloat</span><span class="p">(</span><span class="n">out_name</span><span class="p">,</span> <span class="s2">"threshold"</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-        <span class="n">objectives</span><span class="p">[</span><span class="n">out_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ObjectiveProperties</span><span class="p">(</span>
-            <span class="n">minimize</span><span class="o">=</span><span class="n">minimize</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span>
-        <span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">objectives</span></div>
 </pre></div>
 </div>
 </div>
@@ -371,4 +363,4 @@
 </div>
 </div>
 <div class="clearer"></div>
-</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="AEPsych" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/facebookresearch/aepsych" data-count-href="https://github.com/facebookresearch/aepsych/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star AEPsych on GitHub">aepsych</a></div></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2023 Meta, Inc.  Built with Docusaurus.</section><div class="cookie-container"><p>We use cookies to enhance your experience, and to analyse the use of our website. By clicking or navigating, you agree to allow our usage of cookies.</p><button class="cookie-btn">accept</button></div></footer></div></body></html>
+</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="AEPsych" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/facebookresearch/aepsych" data-count-href="https://github.com/facebookresearch/aepsych/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star AEPsych on GitHub">aepsych</a></div></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2024 Meta, Inc.  Built with Docusaurus.</section><div class="cookie-container"><p>We use cookies to enhance your experience, and to analyse the use of our website. By clicking or navigating, you agree to allow our usage of cookies.</p><button class="cookie-btn">accept</button></div></footer></div></body></html>

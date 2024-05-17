@@ -25,7 +25,7 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">_OneDimensionalLikelihood</span></code></p>
 <p>Bernoulli likelihood with a flexible link (objective) defined
 by a callable (which can be a botorch objective)</p>
-<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>objective</strong> (<em>Callable</em>) – </p>
@@ -39,16 +39,13 @@ by a callable (which can be a botorch objective)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>function_samples</strong> (<em>torch.Tensor</em>) – Samples from the function (<span class="math notranslate nohighlight">\(\mathbf f\)</span>)</p></li>
-<li><p><strong>data</strong> (<em>dict {str: torch.Tensor}</em><em>, </em><em>optional - Pyro integration only</em>) – Additional variables that the likelihood needs to condition
+<li><p><strong>function_samples</strong> – Samples from the function (<span class="math notranslate nohighlight">\(\mathbf f\)</span>)</p></li>
+<li><p><strong>data</strong> – (Pyro integration only.) Additional variables that the likelihood needs to condition
 on. The keys of the dictionary will correspond to Pyro sample sites
 in the likelihood’s model/guide.</p></li>
 <li><p><strong>args</strong> – Additional args</p></li>
 <li><p><strong>kwargs</strong> – Additional kwargs</p></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Distribution</span></code> (with same shape as function_samples )</p>
 </dd>
 </dl>
 </dd></dl>
@@ -71,7 +68,7 @@ in the likelihood’s model/guide.</p></li>
 where <span class="math notranslate nohighlight">\(\sigma()\)</span> is the link function (equivalent to the perceptual noise
 distribution in psychophysics terms), <span class="math notranslate nohighlight">\(f(x)\)</span> is the latent GP evaluated at x,
 and <span class="math notranslate nohighlight">\(d_k\)</span> is a learned cutpoint parameter for each level.</p>
-<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<p>Initialize internal Module state, shared by both nn.Module and ScriptModule.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -92,16 +89,13 @@ and <span class="math notranslate nohighlight">\(d_k\)</span> is a learned cutpo
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>function_samples</strong> (<em>torch.Tensor</em>) – Samples from the function (<span class="math notranslate nohighlight">\(\mathbf f\)</span>)</p></li>
-<li><p><strong>data</strong> (<em>dict {str: torch.Tensor}</em><em>, </em><em>optional - Pyro integration only</em>) – Additional variables that the likelihood needs to condition
+<li><p><strong>function_samples</strong> – Samples from the function (<span class="math notranslate nohighlight">\(\mathbf f\)</span>)</p></li>
+<li><p><strong>data</strong> – (Pyro integration only.) Additional variables that the likelihood needs to condition
 on. The keys of the dictionary will correspond to Pyro sample sites
 in the likelihood’s model/guide.</p></li>
 <li><p><strong>args</strong> – Additional args</p></li>
 <li><p><strong>kwargs</strong> – Additional kwargs</p></li>
 </ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">Distribution</span></code> (with same shape as function_samples )</p>
 </dd>
 </dl>
 </dd></dl>
@@ -245,4 +239,4 @@ aren’t being passed along to self.forward.</p>
 </div>
 </div>
 <div class="clearer"></div>
-</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="AEPsych" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/facebookresearch/aepsych" data-count-href="https://github.com/facebookresearch/aepsych/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star AEPsych on GitHub">aepsych</a></div></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2023 Meta, Inc.  Built with Docusaurus.</section><div class="cookie-container"><p>We use cookies to enhance your experience, and to analyse the use of our website. By clicking or navigating, you agree to allow our usage of cookies.</p><button class="cookie-btn">accept</button></div></footer></div></body></html>
+</div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"><img src="/img/favicon.ico" alt="AEPsych" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docs/introduction">Introduction</a><a href="/docs/getting_started">Getting Started</a><a href="/tutorials/">Tutorials</a><a href="/api/">API Reference</a></div><div><h5>Legal</h5><a href="https://opensource.facebook.com/legal/privacy/" target="_blank" rel="noreferrer noopener">Privacy</a><a href="https://opensource.facebook.com/legal/terms/" target="_blank" rel="noreferrer noopener">Terms</a></div><div><div class="footerSection"><h5>Social</h5><div class="social"><a class="github-button" href="https://github.com/facebookresearch/aepsych" data-count-href="https://github.com/facebookresearch/aepsych/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star AEPsych on GitHub">aepsych</a></div></div></div></section><a href="https://opensource.facebook.com/" target="_blank" rel="noreferrer noopener" class="fbOpenSource"><img src="/img/oss_logo.png" alt="Facebook Open Source" width="170" height="45"/></a><section class="copyright">Copyright © 2024 Meta, Inc.  Built with Docusaurus.</section><div class="cookie-container"><p>We use cookies to enhance your experience, and to analyse the use of our website. By clicking or navigating, you agree to allow our usage of cookies.</p><button class="cookie-btn">accept</button></div></footer></div></body></html>
